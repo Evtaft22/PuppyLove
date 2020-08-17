@@ -20,23 +20,23 @@ function App(props) {
    const [ index, setIndex ] = useState(0);
    const [ dogDisplayInfo, setDogDisplayInfo ] = useState('');
 
+   // useEffect(() => {
+   //    axios.get('/session')
+   //    .then(response => setSessUser(response.data))
+   //    .catch(err => console.error(err));
+   // }, []);
+
    useEffect(() => {
-      axios.get('/session')
-      .then(response => setSessUser(response.data))
-      .catch(err => console.error(err));
-   }, []);
+      axios.get('/myProfileInfo')
+         .then(response => setSessUser(response.data[0]))
+         .catch(err => console.log(16, err));
+   }, [sessUser])
 
    // useEffect(() => {
-   //    axios.get('/myProfileInfo')
-   //       .then(response => setSessUser(response.data[0]))
-   //       .catch(err => console.log(16, err));
-   // }, [])
-
-   useEffect(() => {
-      axios.get('/currentDog')
-      .then(response => setSessDog(response.data[0]))
-      .catch(err => console.error('could not set session dog: ', err));
-   }, []);
+   //    axios.get('/currentDog')
+   //    .then(response => setSessDog(response.data[0]))
+   //    .catch(err => console.error('could not set session dog: ', err));
+   // }, []);
 
    useEffect(() => {
       axios.get('/dogs')
@@ -97,7 +97,7 @@ function App(props) {
                <Route exact path="/login" render={() => (<Login />)} />
                <Route path="/myprofile" render={() => (<MyProfile open={open} sessUser={sessUser} sessDog={sessDog} />)} />
                <Route path="/dogprofile" render={() => (<DogProfile open={open} sessUser={sessUser} sessDog={sessDog} allDogs={allDogs} friends={friends} getFriends={getFriends} />)} />
-               <Route path="/popular" render={() => (<PopularLocations sessUser={sessUser} sessDog={sessDog} google={props.google} open={open} center={{ lat: 29.9511, lng: 90.0715 }} zoom={10} />)} />
+               <Route path="/popular" render={() => (<PopularLocations sessUser={sessUser} sessDog={sessDog} height='70vh' google={props.google} open={open} center={{ lat: 29.9511, lng: 90.0715 }} zoom={10} />)} />
                <Route path="/signUp" render={() => (<SignUp sessUser={sessUser} sessDog={sessDog} />)} />
             </Switch>
          </div>

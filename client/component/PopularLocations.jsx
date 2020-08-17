@@ -324,7 +324,7 @@ class PopularLocations extends Component {
 				</div>
 
 				<AsyncMap
-					googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${"AIzaSyAIShYGz5mXtO2XtWhaOHlrmDz33fKCnmE"}&libraries=places`}
+					googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAIShYGz5mXtO2XtWhaOHlrmDz33fKCnmE&libraries=places`}
 					loadingElement={
 						<div style={{ height: `100%` }} />
 					}
